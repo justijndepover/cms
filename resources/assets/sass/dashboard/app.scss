@@ -1,0 +1,22 @@
+/*
+ * STUDIO DASHBOARD CSS FILE
+ */
+
+// Variables
+@import "../variables";
+$company-color: #9f8251;
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Questrial:400');
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
+@import "main";
+@import "menu";
+@import "header";
+@import "box";
+@import "text";
+@import "toolbox";
+@import "table";

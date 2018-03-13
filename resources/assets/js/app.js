@@ -6,17 +6,24 @@
  */
 
 require('./bootstrap');
+require('./fontawesome-all');
+
+import vmodal from 'vue-js-modal'
 
 window.Vue = require('vue');
-
+Vue.use(vmodal, { dialog: true });
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * Instantiate all the custom components
  */
-
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('s-checkbox', require('./components/Checkbox.vue'));
+Vue.component('s-switch', require('./components/Switch.vue'));
+Vue.component('s-radio', require('./components/Radio.vue'));
+Vue.component('s-table', require('./components/Table.vue'));
 
 const app = new Vue({
     el: '#app'
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

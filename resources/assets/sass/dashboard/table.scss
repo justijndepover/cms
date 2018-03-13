@@ -1,0 +1,59 @@
+table.table{
+    thead{
+        th{
+            border: 0;
+            color: #d6d6d6;
+            font-weight: normal;
+            padding: 8px 16px;
+            line-height: 3.6;
+        }
+    }
+    tbody{
+        tr{
+            td{
+                position: relative;
+                padding: 8px 16px;
+                line-height: 3.6;
+                vertical-align: middle;
+                border-top: 1px solid #eee;
+                transition: background-color .3s ease;
+                a{
+                    color: inherit;
+                }
+                button{
+                    outline: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    border: none;
+                    background-color: transparent;
+                }
+                .dropdown-menu{
+                    top: 80%;
+                }
+                &.show_on_hover{
+                    opacity: 0;
+                }
+                &.open{
+                    opacity: 1;
+                }
+            }
+            &:hover{
+                td{
+                    background-color: #fafafa;
+                    &.show_on_hover{
+                        opacity: 1;
+                    }
+                }
+            }
+            &.selected{
+                td{
+                    background-color: #eef7ff;
+                    &.show_on_hover{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
+use App\Providers\NavigationServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,9 +25,21 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->registerMacros(app(\Illuminate\Routing\Router::class));
 
         parent::boot();
+    }
+
+    protected function registerMacros(Router $router)
+    {
+        $router->macro('module', function ($module, $list = []) use ($router) {
+            $controller = 'Admin\\' . ucfirst($module).'Controller';
+            foreach ($list as $key => $item) {
+                $key = (empty($key)) ? $item : $key;
+                $router->get("{$module}/{$key}", "{$controller}@{$item}")->name("{$module}.{$key}");
+            }
+            $router->resource($module, $controller);
+        });
     }
 
     /**
@@ -39,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapAdminRoutes();
     }
 
     /**
@@ -69,5 +83,19 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Define the "admin" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::prefix('admin')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/admin.php'));
     }
 }

@@ -1,0 +1,72 @@
+header{
+    padding: 30px 50px 0px 50px;
+    .header__title{
+        h1{
+            font-family: 'Archivo Black', sans-serif;
+            position: relative;
+            margin-left: 30px;
+            color: $color-darker;
+            svg{
+                margin-right: 15px;
+                color: $company-color;
+                font-size: 20px;
+                position: absolute;
+                left: -30px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    .header__navigation{
+        margin-top: 27px;
+        .header__navigation__item{
+            display: inline-block;
+            margin-right: 10px;
+            &:last-of-type{
+                margin-right: 0px;
+            }
+            .avatar__pop{
+                z-index:2;
+                position:relative;
+                cursor: pointer;
+                img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: solid 2px #eee;
+                }
+            }
+        }
+        float: right;
+    }
+    nav{
+        margin-left: -50px;
+        margin-right: -50px;
+        margin-top: 40px;
+        border-bottom: solid 1px #efefef;
+        ul{
+            margin: 0 0 0 65px;
+            padding: 0;
+            list-style: none;
+            li{
+                display: inline-block;
+                a{
+                    padding: 10px 0px 7px 0px;
+                    margin: 0 15px;
+                    border-bottom: solid 3px transparent;
+                    display: block;
+                    text-decoration: none;
+                    color: $text-color;
+                    text-transform: uppercase;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    &:hover, &.active{
+                        border-bottom: solid 3px $company-color;
+                        text-decoration: none;
+                        color: $text-color;
+                    }
+                }
+            }
+        }
+    }
+}

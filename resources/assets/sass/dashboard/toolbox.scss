@@ -1,0 +1,25 @@
+.toolbox{
+    height: 50px;
+    border-bottom: solid 1px #eee;
+    background-color: #fafafa;
+    margin: -50px -50px 0px -50px;
+    padding: 0 50px;
+    vertical-align: middle;
+
+    button{
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 0;
+        -webkit-appearance: none;
+        background-color: white;
+        border: solid 1px #eee;
+        border-radius: 3px;
+        margin: 10px 5px;
+        &:disabled{
+            background-color: transparent;
+            border: none;
+            color: #ddd;
+        }
+    }
+}
