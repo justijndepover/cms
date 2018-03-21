@@ -21,5 +21,9 @@
             border: none;
             color: #ddd;
         }
+        &.active{
+            border-color: $company-color;
+            color: $company-color;
+        }
     }
 }

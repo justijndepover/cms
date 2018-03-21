@@ -2023,6 +2023,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['key_url', 'data_url'],
@@ -2031,7 +2037,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             keys: [],
             sorted_key: '',
             sorted_direction: 'asc',
-            data: []
+            data: [],
+            mode: 'normal'
         };
     },
     created: function created() {
@@ -2053,9 +2060,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get(this.data_url).then(function (response) {
                 _this2.data = response.data;
             });
-        },
-        isItemSelected: function isItemSelected() {
-            return !(this.getLength() > 0);
         },
         removeDataPopup: function removeDataPopup() {
             var _this3 = this;
@@ -2117,6 +2121,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'name': 'TEST'
             });
         },
+        move: function move() {
+            this.mode = this.mode == 'move' ? 'normal' : 'move';
+        },
 
         // HELPERS
         getLength: function getLength() {
@@ -2174,6 +2181,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         filteredData: function filteredData() {
+            if (this.getLength() > 0) {
+                this.mode = 'select';
+            } else {
+                this.mode = 'normal';
+            }
+
             var tempData = this.data;
 
             if (this.sorted_key != '') {
@@ -4594,7 +4607,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.fa-check{\n    color: #5be289;\n}\n.fa-times{\n    color: #dd6565;\n}\ntable a{\n    display: block;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.fa-check{\n    color: #5be289;\n}\n.fa-times{\n    color: #dd6565;\n}\n.fa-bars{\n    color: #eee;\n    cursor: -webkit-grab;\n    cursor: grab;\n}\ntable a{\n    display: block;\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -33797,6 +33810,27 @@ var render = function() {
         _c(
           "button",
           {
+            class: { active: _vm.mode == "move" },
+            attrs: {
+              type: "button",
+              name: "button",
+              disabled: _vm.mode == "select",
+              "data-toggle": "tooltip",
+              "data-placement": "bottom",
+              title: "Move items"
+            },
+            on: {
+              click: function($event) {
+                _vm.move()
+              }
+            }
+          },
+          [_c("i", { staticClass: "fas fa-sort" })]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
             attrs: {
               type: "button",
               name: "button",
@@ -33821,7 +33855,7 @@ var render = function() {
             attrs: {
               type: "button",
               name: "button",
-              disabled: _vm.isItemSelected(),
+              disabled: _vm.mode != "select",
               "data-toggle": "tooltip",
               "data-placement": "bottom",
               title: "Delete items"
@@ -33871,7 +33905,13 @@ var render = function() {
               [
                 _c(
                   "td",
-                  { staticClass: "show_on_hover" },
+                  {
+                    class: {
+                      show_on_hover: _vm.mode == "move",
+                      hidden: _vm.mode == "move"
+                    },
+                    staticStyle: { width: "47px" }
+                  },
                   [
                     _c("s-checkbox", {
                       model: {
@@ -33884,6 +33924,15 @@ var render = function() {
                     })
                   ],
                   1
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    class: { hidden: _vm.mode != "move" },
+                    staticStyle: { width: "47px" }
+                  },
+                  [_c("i", { staticClass: "fas fa-bars" })]
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.keys, function(key) {

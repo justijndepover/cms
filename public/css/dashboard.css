@@ -8683,6 +8683,11 @@ p {
   color: #ddd;
 }
 
+.toolbox button.active {
+  border-color: #9f8251;
+  color: #9f8251;
+}
+
 table.table thead th {
   border: 0;
   color: #d6d6d6;

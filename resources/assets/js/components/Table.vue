@@ -1,13 +1,16 @@
 <template>
     <div>
         <div class="toolbox">
+            <button type="button" name="button" :disabled="mode == 'select'" v-bind:class="{'active': mode == 'move'}" data-toggle="tooltip" data-placement="bottom" title="Move items" @click="move()">
+                <i class="fas fa-sort"></i>
+            </button>
             <button type="button" name="button" data-toggle="tooltip" data-placement="bottom" title="Duplicate items" @click="add()">
                 <i class="far fa-copy"></i>
             </button>
             <button type="button" name="button">
                 <i class="fas fa-print"></i>
             </button>
-            <button type="button" name="button" :disabled="isItemSelected()" @click="removeDataPopup()" data-toggle="tooltip" data-placement="bottom" title="Delete items">
+            <button type="button" name="button" :disabled="mode != 'select'" @click="removeDataPopup()" data-toggle="tooltip" data-placement="bottom" title="Delete items">
                 <i class="far fa-trash-alt"></i>
             </button>
         </div>
@@ -20,8 +23,11 @@
             </thead>
             <tbody>
                 <tr v-for="item in filteredData" v-bind:class="{ 'selected': item.checked == true }">
-                    <td class="show_on_hover">
+                    <td v-bind:class="{'show_on_hover' : mode == 'move', 'hidden' : mode == 'move'}" style="width:47px">
                         <s-checkbox v-model="item.checked" />
+                    </td>
+                    <td v-bind:class="{'hidden' : mode != 'move'}" style="width:47px">
+                        <i class="fas fa-bars"></i>
                     </td>
                     <td v-for="key in keys" v-html="parseValue(item, key)"></td>
                     <td class="show_on_hover"><a href="#"><i class="far fa-edit"></i></a></td>
@@ -52,7 +58,8 @@
                 keys: [],
                 sorted_key: '',
                 sorted_direction: 'asc',
-                data: []
+                data: [],
+                mode: 'normal'
             }
         },
         created() {
@@ -69,9 +76,6 @@
                 axios.get(this.data_url).then((response) => {
                     this.data = response.data;
                 });
-            },
-            isItemSelected() {
-                return !(this.getLength() > 0);
             },
             removeDataPopup() {
                 var length = this.getLength();
@@ -129,6 +133,9 @@
                     'name': 'TEST'
                 })
             },
+            move(){
+                this.mode = (this.mode == 'move') ? 'normal' : 'move';
+            },
             // HELPERS
             getLength() {
                 return this.data.filter(item => (item.checked == true)).length;
@@ -183,6 +190,12 @@
         },
         computed: {
             filteredData() {
+                if(this.getLength() > 0){
+                    this.mode = 'select';
+                } else {
+                    this.mode = 'normal';
+                }
+
                 var tempData = this.data;
 
                 if(this.sorted_key != '') {
@@ -196,14 +209,18 @@
 </script>
 
 <style>
-.fa-check{
-    color: #5be289;
-}
-.fa-times{
-    color: #dd6565;
-}
-table a{
-    display: block;
-    text-align: center;
-}
+    .fa-check{
+        color: #5be289;
+    }
+    .fa-times{
+        color: #dd6565;
+    }
+    .fa-bars{
+        color: #eee;
+        cursor: grab;
+    }
+    table a{
+        display: block;
+        text-align: center;
+    }
 </style>
