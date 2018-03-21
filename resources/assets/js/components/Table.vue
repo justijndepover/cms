@@ -21,12 +21,12 @@
                 <th width="16"></th>
                 <th width="16"></th>
             </thead>
-            <tbody>
+            <draggable v-model="data" :element="'tbody'" :options="{handle:'.handle'}">
                 <tr v-for="item in filteredData" v-bind:class="{ 'selected': item.checked == true }">
                     <td v-bind:class="{'show_on_hover' : mode == 'move', 'hidden' : mode == 'move'}" style="width:47px">
                         <s-checkbox v-model="item.checked" />
                     </td>
-                    <td v-bind:class="{'hidden' : mode != 'move'}" style="width:47px">
+                    <td v-bind:class="{'hidden' : mode != 'move', 'handle' : mode == 'move'}" style="width:47px">
                         <i class="fas fa-bars"></i>
                     </td>
                     <td v-for="key in keys" v-html="parseValue(item, key)"></td>
@@ -41,14 +41,18 @@
                         </ul>
                     </td>
                 </tr>
-            </tbody>
+            </draggable>
         </table>
         <v-dialog/>
     </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
     export default {
+        components: {
+            draggable,
+        },
         props: [
             'key_url',
             'data_url'
