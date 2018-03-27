@@ -16,4 +16,15 @@ class SupportController extends Controller
     {
         return view('admin.support.index');
     }
+
+    public function phpinfo()
+    {
+        ob_start();
+        phpinfo();
+        $phpinfo = ob_get_contents();
+        ob_end_clean();
+
+        $phpinfo = preg_replace( '%^.*<body>(.*)</body>.*$%ms','$1',$phpinfo);
+        return view('admin.support.phpinfo', compact('phpinfo'));
+    }
 }

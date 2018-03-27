@@ -20,3 +20,4 @@ Route::module('pages', [
 ]);
 
 Route::get('support', 'Admin\SupportController@index');
+Route::get('support/phpinfo', 'Admin\SupportController@phpinfo');

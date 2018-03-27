@@ -37,8 +37,8 @@ Route::get('table', function(){
 
 Route::get('keys', function(){
     $return = [
-        ['name' => 'Name', 'key' => 'name', 'type' => 'text', 'sortable' => true, 'searchable' => true],
-        ['name' => 'Date', 'key' => 'birthday', 'type' => 'date', 'sortable' => true, 'searchable' => true],
+        ['name' => 'Name', 'key' => 'name', 'type' => 'text', 'sortable' => false, 'searchable' => true],
+        ['name' => 'Date', 'key' => 'birthday', 'type' => 'date', 'sortable' => false, 'searchable' => true],
         ['name' => 'Active', 'key' => 'active', 'type' => 'status', 'sortable' => false, 'searchable' => false, 'small' => true, 'link' => '/{{id}}/edit'],
     ];
 
