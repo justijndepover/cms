@@ -40,7 +40,7 @@ section.side_navigation{
             position: relative;
             &:hover{
                 a {
-                    color: #0070E0;
+                    color: $company-color;
                 }
             }
             a{

@@ -70,3 +70,8 @@ header{
         }
     }
 }
+@media all and (max-width: 768px) {
+    header nav ul{
+        margin-left: 20px;
+    }
+}

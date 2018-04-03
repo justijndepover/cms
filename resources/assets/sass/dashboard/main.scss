@@ -2,7 +2,8 @@ body{
     background-color: #fcfdff;
     height: 100%;
     min-height: 100%;
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Lato', sans-serif;
+    // font-family: 'Questrial', sans-serif;
     font-size: 12px;
 }
 
@@ -10,6 +11,10 @@ main{
     margin-left: 240px;
     // padding: 30px 50px 50px 50px;
     transition: .5s ease all;
+}
+
+.main__content{
+    padding: 20px 50px;
 }
 
 @media all and (max-width: 480px) {
@@ -29,8 +34,10 @@ main{
     }
 }
 
-.main__content{
-    padding: 50px;
+@media all and (max-width: 768px) {
+    .main__content{
+        padding: 20px 15px;
+    }
 }
 
 .clear{

@@ -27,4 +27,9 @@ class SupportController extends Controller
         $phpinfo = preg_replace( '%^.*<body>(.*)</body>.*$%ms','$1',$phpinfo);
         return view('admin.support.phpinfo', compact('phpinfo'));
     }
+
+    public function components()
+    {
+        return view('admin.support.components');
+    }
 }
