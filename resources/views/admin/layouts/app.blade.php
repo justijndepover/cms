@@ -12,29 +12,31 @@
     <body>
         <div id="app">
             <section class="side_navigation">
-                <div class="logo_box">
-                    <a href="{{ Request::root() }}">
-                        <img src="http://www.simondebackere.be/images/assets/logos/logo.png" alt="logo">
-                    </a>
-                </div>
-                <h1>Main</h1>
-                <ul>
-                    <li><a href="">Reports</a></li>
-                    <li><a href="">Insights</a></li>
-                    <li><a href="">Spreadsheets</a></li>
-                    <li><a href="">Leaderboard</a></li>
-                    <li><a href="">Administration</a></li>
-                    <li><a href="">Sales <span class="badge">new</span></a></li>
-                    <li><a href="">Schedule</a></li>
-                </ul>
-                <h1>Help</h1>
-                <ul>
-                    <li><a href="">Settings</a></li>
-                    <li><a href="">Library</a></li>
-                    <li><a href="">Support</a></li>
-                </ul>
-                <div class="side_navigation__footer">
-                    <a href="{{ Request::root() }}" data-toggle="tooltip" data-placement="top" title="{{ Request::isSecure() ? 'The website is secure': 'The website is not secure' }}"><i class="fa {{ Request::isSecure() ? 'fa-lock': 'fa-unlock' }}"></i>&nbsp;&nbsp;&nbsp;{{ Request::getHost() }}</a>
+                <div class="side_navigation__wrapper">
+                    <div class="logo_box">
+                        <a href="{{ Request::root() }}">
+                            <img src="http://www.simondebackere.be/images/assets/logos/logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <h1>Main</h1>
+                    <ul>
+                        <li><a href="">Reports</a></li>
+                        <li><a href="">Insights</a></li>
+                        <li><a href="">Spreadsheets</a></li>
+                        <li><a href="">Leaderboard</a></li>
+                        <li><a href="">Administration</a></li>
+                        <li><a href="">Sales <span class="badge">new</span></a></li>
+                        <li><a href="">Schedule</a></li>
+                    </ul>
+                    <h1>Help</h1>
+                    <ul>
+                        <li><a href="">Settings</a></li>
+                        <li><a href="">Library</a></li>
+                        <li><a href="">Support</a></li>
+                    </ul>
+                    <div class="side_navigation__footer">
+                        <a href="{{ Request::root() }}" data-toggle="tooltip" data-placement="top" title="{{ Request::isSecure() ? 'The website is secure': 'The website is not secure' }}"><i class="fa {{ Request::isSecure() ? 'fa-lock': 'fa-unlock' }}"></i>&nbsp;&nbsp;&nbsp;{{ Request::getHost() }}</a>
+                    </div>
                 </div>
             </section>
             <main class="main">
