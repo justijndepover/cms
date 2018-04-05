@@ -7,31 +7,31 @@
         <br>
         <div class="row">
             <div class="col-md-9">
-                <form class="form">
+                {{ html()->form('PUT', '/post')->class('form')->open() }}
                     <div class="wrow">
                         <div class="w50">
-                            <label for="InputEmail">Email address</label>
-                            <input type="email" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="firstname">Firstname</label>
+                            {{ html()->text()->placeholder('Firstname')->id('firstname') }}
                         </div>
                         <div class="w50">
-                            <label for="InputEmail">Email address</label>
-                            <input type="email" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="lastname">Lastname</label>
+                            {{ html()->text()->placeholder('Firstname')->id('lastname') }}
                         </div>
                     </div>
                     <div class="wrow">
                         <div class="w100">
-                            <label for="InputPassword">Password</label>
-                            <input type="password" id="InputPassword" placeholder="Password">
+                            <label for="password">Password</label>
+                            {{ html()->password()->placeholder('Password')->id('password') }}
                         </div>
                     </div>
                     <div class="wrow">
                         <div class="w100">
-                            <label for="InputTextarea">Text</label>
-                            <textarea id="InputTextarea" rows="10" placeholder="Text"></textarea>
+                            <label for="textarea">Text</label>
+                            {{ html()->textarea()->placeholder('Text')->id('textarea')->attribute('rows', 10) }}
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                    {{ html()->button('Submit')->type('submit')->class('btn btn-default') }}
+                {{ html()->form()->close() }}
             </div>
             <div class="col-md-3">
                 <div class="panel" style="padding: 10px; background-color: #fafafa;">
