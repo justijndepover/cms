@@ -181,6 +181,7 @@ return [
          * Custom Service Providers
          */
          Spatie\Html\HtmlServiceProvider::class,
+         App\Services\NavigationServiceProvider::class,
 
     ],
 

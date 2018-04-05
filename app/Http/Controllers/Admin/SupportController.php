@@ -30,6 +30,7 @@ class SupportController extends Controller
 
     public function components()
     {
+        $category = new \App\Models\Category();
         return view('admin.support.components');
     }
 }
