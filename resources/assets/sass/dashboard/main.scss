@@ -1,5 +1,5 @@
 body{
-    background-color: #fcfdff;
+    background-color: #fafafa;
     height: 100%;
     min-height: 100%;
     font-family: 'Lato', sans-serif;
@@ -14,7 +14,9 @@ main{
 }
 
 .main__content{
-    padding: 20px 50px;
+    padding: 20px 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 @media all and (max-width: 480px) {

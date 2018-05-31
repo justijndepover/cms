@@ -225,6 +225,10 @@ import draggable from 'vuedraggable'
     }
     table a{
         display: block;
-        text-align: center;
+        text-decoration: none;
+        /*text-align: center;*/
+    }
+    table a:hover{
+        text-decoration: none;
     }
 </style>

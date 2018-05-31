@@ -20,7 +20,7 @@
                     </div>
                     <h1>Main</h1>
                     <ul>
-                        <li><a href="">Reports</a></li>
+                        <li><a href="/admin">Users</a></li>
                         <li><a href="">Insights</a></li>
                         <li><a href="">Spreadsheets</a></li>
                         <li><a href="">Leaderboard</a></li>
@@ -57,25 +57,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="header__title">
+                    {{-- <div class="header__title">
                         <h1><i class="{{ $icon }}"></i>{{ $title }}</h1>
+                    </div> --}}
+                    <div>
+                        <input type="text" name="search" class="header__search" value="" placeholder="search">
                     </div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <a class="active">General</a>
-                            </li>
-                            <li>
-                                <a>Tasks</a>
-                            </li>
-                            <li>
-                                <a>Notes</a>
-                            </li>
-                            <li>
-                                <a>Documents</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </header>
                 <div class="main__content">
                     {{ $slot }}

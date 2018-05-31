@@ -4613,7 +4613,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.fa-check{\n    color: #5be289;\n}\n.fa-times{\n    color: #dd6565;\n}\n.fa-bars{\n    color: #eee;\n    cursor: -webkit-grab;\n    cursor: grab;\n}\ntable a{\n    display: block;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.fa-check{\n    color: #5be289;\n}\n.fa-times{\n    color: #dd6565;\n}\n.fa-bars{\n    color: #eee;\n    cursor: -webkit-grab;\n    cursor: grab;\n}\ntable a{\n    display: block;\n    text-decoration: none;\n    /*text-align: center;*/\n}\ntable a:hover{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
